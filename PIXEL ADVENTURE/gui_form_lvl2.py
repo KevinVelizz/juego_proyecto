@@ -78,7 +78,7 @@ class LevelDos(Form):
             self.surface.blit(self.win,(500,50))
             self.acumulador_time += delta_ms
             if(self.acumulador_time >= 2000):
-                self.set_active("Menu")
+                self.set_active("levels")
                 self.resetear()
                 self.acumulador_time = 0
 
@@ -87,7 +87,7 @@ class LevelDos(Form):
             self.surface.blit(self.lose,(500,50))
             self.acumulador_time += delta_ms
             if(self.acumulador_time >= 2000):
-                self.set_active("Menu")
+                self.set_active("levels")
                 self.resetear()
                 self.acumulador_time = 0
 

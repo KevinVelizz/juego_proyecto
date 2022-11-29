@@ -34,10 +34,10 @@ class Widget:
         self.slave_rect_collide.x += self.master_form.x
         self.slave_rect_collide.y += self.master_form.y
 
-        if self.color_background:
+        if self.color_background != None:
             self.slave_surface.fill(self.color_background)
         
-        if self.image_background:
+        if self.image_background != None:
             self.slave_surface.blit(self.image_background,(0,0))
         
         if(self._text != None):

@@ -42,6 +42,9 @@ class Player:
         self.impacto = False
         self.damage_generate = 0
 
+        #sonidos
+        self.laser_sound = pygame.mixer.Sound("PIXEL ADVENTURE/Recursos/music/laser5.ogg")
+
         self.hp = 100
 
         self.collition_rect = pygame.Rect(+x+self.rect.width/3,y,self.rect.width/2,self.rect.height)
@@ -162,9 +165,7 @@ class Player:
                 self.animation_frame(self.hit_r)
                 self.animation = self.hit_r
                 self.hp -= 3
-                self.death()
-
-        
+                self.death()    
 
     def death(self):
         if(self.hp <= 0):
@@ -243,7 +244,9 @@ class Player:
                 if(event.key == pygame.K_SPACE):
                     self.jump()
                 if(event.key == pygame.K_DOWN):
+                    self.laser_sound.play()
                     self.disparar()
+                    
     
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:

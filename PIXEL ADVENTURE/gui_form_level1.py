@@ -8,6 +8,9 @@ from plataforma import *
 from score import *
 from gui_barravida import *
 from info_total_lvl1 import *
+from gui_textbox import *
+from gui_widget import *
+from gui_time import *
 
 class LevelUno(Form):
     def __init__(self, name, master_form, x, y, w, h, color_border, active, image_background=None, color_background=None):
@@ -22,7 +25,11 @@ class LevelUno(Form):
         self.lista_plataformas = self.lista_data.lista_platform
         self.contador_puntos = 0
         self.acumulador_time = 0
+        self.text_score = 0
+        self.time_acumulador = 0
+        self.time = FormTime("time",self.master_form,600,20,200,100,(0,0,0),True,None,None)
 
+        self.lista_widget = [self.time]
         #enemigos
         self.lista_enemigos = self.lista_data.lista_enemy
 
@@ -38,8 +45,9 @@ class LevelUno(Form):
 
     def draw(self):
         super().draw()
-        self.surface.fill((0,0,0))
         self.surface.blit(self.imagen_fondo,(0,0))
+        # for aux_boton in self.lista_widget:
+        #     aux_boton.draw()
 
     def resetear(self):
         self.lista_data = CargarData(self.master_form)
@@ -61,20 +69,22 @@ class LevelUno(Form):
 
     def play_juego(self,delta_ms,lista_events):
         if(not self.lista_data.win and not self.player.muerte):
+            
+            self.time.active = True
+            self.time.puntos(lista_events,self.time_acumulador)
 
             text_score2 = Text(1400,30,"{0}".format(self.lista_data.puntos),(0,0,0),self.master_form)
 
-            self.lista_data.update(delta_ms,self.player)
-
+            self.lista_data.update(delta_ms,self.player,self.master_form)
             #player
             self.player.update(delta_ms,self.lista_plataformas,self.lista_enemigos,lista_events,self.lista_data.list_trampas)
             self.player.draw()
 
-            self.text_score.draw()
-            text_score2.draw()
-
             self.barra_vida.update(lista_events,self.player.hp)
             self.barra_vida.draw()
+
+            self.text_score.draw()
+            text_score2.draw()
 
         if(self.lista_data.win):
             self.contador_puntos = self.lista_data.puntos
@@ -82,7 +92,7 @@ class LevelUno(Form):
             self.surface.blit(self.win,(500,50))
             self.acumulador_time += delta_ms
             if(self.acumulador_time >= 2000):
-                self.set_active("Menu")
+                self.set_active("levels")
                 self.resetear()
                 self.acumulador_time = 0
 
@@ -91,7 +101,7 @@ class LevelUno(Form):
             self.surface.blit(self.lose,(500,50))
             self.acumulador_time += delta_ms
             if(self.acumulador_time >= 2000):
-                self.set_active("Menu")
+                self.set_active("levels")
                 self.resetear()
                 self.acumulador_time = 0
 
@@ -99,6 +109,6 @@ class LevelUno(Form):
             if(event.type == pygame.KEYDOWN):
                 if(event.key == pygame.K_ESCAPE):
                     self.set_active("pause")
-
+            
 
        

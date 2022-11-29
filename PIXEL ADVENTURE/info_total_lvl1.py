@@ -69,7 +69,7 @@ class CargarData:
                 for i in range(trampa["amount"]):
                     self.list_trampas.append(Trampa(trampa["position_x"][i],trampa["position_y"][i],50,self.screen))
 
-    def update(self,delta_ms,player):
+    def update(self,delta_ms,player,screen):
         for trampa in self.list_trampas:
             trampa.update(delta_ms)
             trampa.draw()
@@ -87,7 +87,7 @@ class CargarData:
 
         for fruit in self.list_fruits:
             fruit.update(delta_ms,self.lista_platform,player.collition_rect)
-            fruit.draw()    
+            fruit.draw(screen)    
             if(fruit.collision):
                 self.puntos = self.puntos + 50
                 self.list_fruits.remove(fruit)

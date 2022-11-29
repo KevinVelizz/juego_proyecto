@@ -10,7 +10,7 @@ from gui_menu_options import *
 from gui_form_lvls import *
 from gui_form_lvl2 import *
 from gui_from_pause import *
-from gui_puntos import *
+from gui_ranking import *
 from gui_form_lvl3 import *
 
 screen = pygame.display.set_mode((ANCHO_VENTANA,ALTO_VENTANA))
@@ -44,7 +44,8 @@ while True:
         levels.update(lista_events)
         levels.draw()
 
-    elif(menu.active):
+    elif(menu.active):        
+
         menu.update(lista_events)
         menu.draw()
 

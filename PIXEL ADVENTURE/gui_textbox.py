@@ -21,24 +21,24 @@ class TextBox(Widget):
 
     def update(self,lista_eventos):
         
-        # mousePos = pygame.mouse.get_pos()
-        # self.state = M_STATE_NORMAL
-        # if self.slave_rect_collide.collidepoint(mousePos):
-        #     if(self.writing_flag):
-        #         self.state = M_BRIGHT_CLICK
-        #     else:
-        #         self.state = M_STATE_HOVER
+        mousePos = pygame.mouse.get_pos()
+        self.state = M_STATE_NORMAL
+        if self.slave_rect_collide.collidepoint(mousePos):
+            if(self.writing_flag):
+                self.state = M_BRIGHT_CLICK
+            else:
+                self.state = M_STATE_HOVER
 
-        # for evento in lista_eventos:
-        #     if evento.type == pygame.MOUSEBUTTONDOWN :
-        #         self.writing_flag = self.slave_rect_collide.collidepoint(evento.pos)
-        #     if evento.type == pygame.KEYDOWN and self.writing_flag:
-        #         if evento.key == pygame.K_RETURN:
-        #             self.writing_flag = False
-        #         elif evento.key == pygame.K_BACKSPACE:
-        #             self._text = self._text[:-1]
-        #         else:
-        #             self._text += evento.unicode
+        for evento in lista_eventos:
+            if evento.type == pygame.MOUSEBUTTONDOWN :
+                self.writing_flag = self.slave_rect_collide.collidepoint(evento.pos)
+            if evento.type == pygame.KEYDOWN and self.writing_flag:
+                if evento.key == pygame.K_RETURN:
+                    self.writing_flag = False
+                elif evento.key == pygame.K_BACKSPACE:
+                    self._text = self._text[:-1]
+                else:
+                    self._text += evento.unicode
 
         self.render()
 
