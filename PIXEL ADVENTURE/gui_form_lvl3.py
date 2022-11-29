@@ -31,9 +31,9 @@ class LevelTres(Form):
         #score
         self.text_score = Text(1300,30,"SCORE: ",(0,0,0),master_form)
         self.lose = pygame.image.load(PATH_IMAGE + "Menu/Buttons/you lose.png").convert()
-        self.lose = pygame.transform.scale(self.lose,(500,500)) 
+        self.lose = pygame.transform.scale(self.lose,(450,300)) 
         self.win = pygame.image.load(PATH_IMAGE + "Menu/Buttons/you win.png").convert()
-        self.win = pygame.transform.scale(self.win,(500,500))
+        self.win = pygame.transform.scale(self.win,(450,300))
 
     def draw(self):
         super().draw()
@@ -54,9 +54,9 @@ class LevelTres(Form):
         #frutas
         self.fruits = self.lista_info.list_fruits
         self.lose = pygame.image.load(PATH_IMAGE + "Menu/Buttons/you lose.png").convert()
-        self.lose = pygame.transform.scale(self.lose,(500,500)) 
+        self.lose = pygame.transform.scale(self.lose,(450,300)) 
         self.win = pygame.image.load(PATH_IMAGE + "Menu/Buttons/you win.png").convert()
-        self.win = pygame.transform.scale(self.win,(500,500))
+        self.win = pygame.transform.scale(self.win,(450,300))
 
     def play_juego(self,delta_ms,lista_events):
         if(not self.lista_info.win and not self.player_dos.muerte):
@@ -75,7 +75,7 @@ class LevelTres(Form):
 
         if(self.lista_info.win):
             self.contador_puntos = self.lista_info.puntos
-            self.surface.blit(self.win,(500,50))
+            self.surface.blit(self.win,(ANCHO_VENTANA / 2 - 450/2,150))
             self.acumulador_time += delta_ms
             if(self.acumulador_time >= 2000):
                 self.set_active("levels")
@@ -84,7 +84,7 @@ class LevelTres(Form):
 
         if(self.player_dos.muerte):
             self.contador_puntos = self.lista_info.puntos
-            self.surface.blit(self.lose,(500,50))
+            self.surface.blit(self.lose,(ANCHO_VENTANA / 2 - 450/2,150))
             self.acumulador_time += delta_ms
             if(self.acumulador_time >= 2000):
                 self.set_active("levels")
