@@ -13,5 +13,4 @@ def cargar_json_data(path:str) -> list:
         lista = json.load(file)
     return lista["levels"]
 
-lista_info = cargar_json_data("PIXEL ADVENTURE/levels.json")[0]["level_two"]
-
+lista_info = cargar_json_data("PIXEL ADVENTURE/levels.json")[0]["level_one"]

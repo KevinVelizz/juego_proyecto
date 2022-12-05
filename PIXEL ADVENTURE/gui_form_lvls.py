@@ -8,13 +8,17 @@ class FormLevels(Form):
     def __init__(self, name, master_surface, x, y, w, h, color_border, active, image_background=None, color_background=None):
         super().__init__(name, master_surface, x, y, w, h, color_border, active, image_background, color_background)
 
+        self.condicion_lvl2 = False
+        self.condicion_lvl3 = False
+        self.param_anterior = ""
+
         self.level1 = Button(master=self,x=375,y=45,w=70,h=70,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Levels/01.png",on_click=self.iniciar_level,on_click_param="level_uno",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
 
         self.level2 = Button(master=self,x=750,y=45,w=70,h=70,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Levels/02.png",on_click=self.iniciar_level,on_click_param="level_dos",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
 
         self.level3 = Button(master=self,x=1125,y=45,w=70,h=70,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Levels/03.png",on_click=self.iniciar_level,on_click_param="level_tres",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
 
-        self.volver_menu = Button(master=self,x=10,y=700,w=100,h=80,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/Back.png",on_click=self.iniciar_level,on_click_param="Menu",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
+        self.volver_menu = Button(master=self,x=10,y=700,w=100,h=80,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/Back.png",on_click=self.on_click_boton1,on_click_param="Menu",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
 
         self.txt1 = TextBox(master=self,x=330,y=20,w=170,h=150,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/imagen_levels.png",text=None,font="Arial",font_size=40,font_color=C_BLACK)
 
@@ -27,13 +31,24 @@ class FormLevels(Form):
     def on_click_boton1(self, parametro):
         self.set_active(parametro)
     
-    def update(self, lista_eventos):
+    def update(self, lista_eventos,condicion):
         for aux_boton in self.lista_widget:
             aux_boton.update(lista_eventos)
 
+        if(condicion[0]):
+            self.level2.on_click_param = "level_dos"
+        else:
+            self.level2.on_click_param = "levels"
+        if(condicion[-1]):
+            self.level3.on_click_param = "level_tres"
+        else:
+            self.level3.on_click_param = "levels"
+        
     def iniciar_level(self,parametro):
         self.on_click_boton1(parametro)
         self.forms_dict["pause"].cambiar_lvl(parametro)
+        self.param_anterior = parametro
+
 
     def draw(self): 
         super().draw()
@@ -42,5 +57,4 @@ class FormLevels(Form):
             aux_boton.draw()
         
 
-    
 

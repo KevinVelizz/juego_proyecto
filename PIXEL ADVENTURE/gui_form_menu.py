@@ -9,7 +9,7 @@ class FormMenu(Form):
         super().__init__(name, master_surface, x, y, w, h, color_border, active, image_background, color_background)
 
 
-        self.texto_menu = TextBox(master=self,x=ANCHO_VENTANA/2 - 400/ 2,y=100,w=400,h=150,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Banner06.png",text="MENU",font="Arial",font_size=40,font_color=C_BLACK)
+        self.texto_menu = Widget(self,ANCHO_VENTANA/2 - 400/ 2,100,400,150,None,None,"PIXEL ADVENTURE/Recursos/Menu/Banner06.png","MENU","Arial",40,C_BLACK)
 
         self.options = Button(master=self,x=ANCHO_VENTANA/2 - 150/ 2,y=400,w=150,h=60,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/boton_options.png",on_click=self.on_click_boton1,on_click_param="Options",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
 
@@ -24,7 +24,7 @@ class FormMenu(Form):
     def on_click_boton1(self, parametro):
         self.set_active(parametro)
         
-    def update(self, lista_eventos):
+    def update(self,lista_eventos):
         for aux_boton in self.lista_widget:
             aux_boton.update(lista_eventos)
 

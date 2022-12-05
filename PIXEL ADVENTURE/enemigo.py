@@ -241,7 +241,7 @@ class EnemyRino(Enemy):
         self.move_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Enemies/Rino/Run (52x34).png",6,1,True,1,1.5)
         
         self.hit = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Enemies/Rino/Hit (52x34).png",5,1,False,1,1.5)
-        self.rect_vision = pygame.Rect(self.rect.x - 150,self.rect.y,self.rect.w + 150,self.rect.h)
+        self.rect_vision = pygame.Rect(self.rect.x - 150,self.rect.y,self.rect.w + 400,self.rect.h)
 
     def is_collision_bala(self):
         if(self.impacto):

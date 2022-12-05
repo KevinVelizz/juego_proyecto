@@ -12,9 +12,16 @@ from gui_form_lvl2 import *
 from gui_from_pause import *
 from gui_ranking import *
 from gui_form_lvl3 import *
+from gui_form_name import *
+from controller import *
+from gui_form_rankings import *
+
+pygame.init()
+pygame.mixer.music.load("PIXEL ADVENTURE/Recursos/music/musica_fondo.wav")
+pygame.mixer.music.set_volume(0.7)
+pygame.mixer.music.play(-1)
 
 screen = pygame.display.set_mode((ANCHO_VENTANA,ALTO_VENTANA))
-pygame.init()
 clock = pygame.time.Clock()
 imagen_fondo = pygame.image.load(PATH_IMAGE + "fondo/game_background_3. 2.png").convert()
 imagen_fondo = pygame.transform.scale(imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
@@ -24,52 +31,80 @@ menu = FormMenu("Menu",screen,0,0,ANCHO_VENTANA,ALTO_VENTANA,(0,0,0),True,image_
 options = FormOptions("Options",screen,0,0,ANCHO_VENTANA,ALTO_VENTANA,(0,0,0),False,image_background="fondo/game_background_3. 2.png",color_background=None)
 levels = FormLevels("levels",screen,0,0,ANCHO_VENTANA,ALTO_VENTANA,(0,0,0),False,image_background="fondo/game_background_3. 2.png",color_background=None)
 level_dos = LevelDos("level_dos",screen,0,0,ANCHO_VENTANA,ALTO_VENTANA,(0,0,0),False,"fondo/game_background_3. 2.png",color_background=None)
-juego_pause = FormPauseLvl("pause",screen,500,100,400,400,(0,0,0),False,image_background="Menu/Buttons/bg.png",color_background=None)
-ranking = FormRanking("ranking",screen,500,250,500,300,(0,0,0),False,"Menu/Buttons/table.png",None)
+juego_pause = FormPauseLvl("pause",screen,500,100,400,400,None,False,image_background="Menu/Buttons/bg.png",color_background=None)
+ranking1 = FormRanking("nivel_uno",screen,550,100,400,600,None,False,"Menu/Buttons/table.png",None)
+ranking2 = FormRanking("nivel_dos",screen,550,100,400,600,None,False,"Menu/Buttons/table.png",None)
+ranking3 = FormRanking("nivel_tres",screen,550,100,400,600,None,False,"Menu/Buttons/table.png",None)
 level_tres = LevelTres("level_tres",screen,0,0,ANCHO_VENTANA,ALTO_VENTANA,(0,0,0),False,"fondo/game_background_3. 2.png",None)
-    
+form_name_player = FormTextName("name_player",screen,0,0,ANCHO_VENTANA,ALTO_VENTANA,None,False,"fondo/game_background_3. 2.png",None)
+form_clasifiaciones = FormClasificaciones("ranking",screen,0,0,ANCHO_VENTANA,ALTO_VENTANA,None,False,"fondo/game_background_3. 2.png",None)
+
 while True:
     lista_events = pygame.event.get()   
     for event in lista_events:
         if(event.type == pygame.QUIT):
             pygame.quit()
             sys.exit()
+
     delta_ms = clock.tick(FPS)
 
     if(level_uno.active):
         level_uno.draw()
-        level_uno.play_juego(delta_ms,lista_events)
+        level_uno.update(delta_ms,lista_events)
         
     elif(levels.active):
-        levels.update(lista_events)
+        levels.update(lista_events,(level_uno.win_lvl,level_dos.win_lvl2))
         levels.draw()
 
     elif(menu.active):        
-
         menu.update(lista_events)
         menu.draw()
 
     elif(options.active):
         options.update(lista_events)
         options.draw()
-
+    
     elif(level_dos.active):
-        level_dos.update(lista_events)
         level_dos.draw()
-        level_dos.play_juego(delta_ms,lista_events)
+        level_dos.update(delta_ms,lista_events)
 
     elif(juego_pause.active):
         juego_pause.update(lista_events)
         juego_pause.draw()
     
     elif(level_tres.active):
-        level_tres.update(lista_events)
         level_tres.draw()
-        level_tres.play_juego(delta_ms,lista_events)
+        level_tres.update(delta_ms,lista_events)
 
-    if(ranking.active):
-        screen.blit(imagen_fondo,(0,0))
-        ranking.puntos(lista_events,(level_uno.contador_puntos + level_dos.contador_puntos))
-        ranking.draw()
+    elif(form_name_player.active):
+        form_name_player.update(lista_events)
+        form_name_player.draw()
+        puntos = level_uno.contador_puntos + level_dos.contador_puntos + level_tres.contador_puntos
+        nombre = form_name_player.nombre_viajar
+
+        if(nombre != ""):
+            insertRow(nombre,puntos,form_name_player.nivel_actual)
+            nombre = ""
+            form_name_player.nombre_viajar = ""
+            level_uno.contador_puntos = 0
+            level_dos.contador_puntos = 0
+            level_tres.contador_puntos = 0
+            form_name_player.name_player._text = "Player"
+
+    elif(form_clasifiaciones.active):
+        form_clasifiaciones.update(lista_events)
+        form_clasifiaciones.draw()
+
+    elif(ranking1.active):
+        ranking1.update(lista_events)
+        ranking1.draw()
+
+    elif(ranking2.active):
+        ranking2.update(lista_events)
+        ranking2.draw()
+
+    elif(ranking3.active):
+        ranking3.update(lista_events)
+        ranking3.draw()
 
     pygame.display.flip()  

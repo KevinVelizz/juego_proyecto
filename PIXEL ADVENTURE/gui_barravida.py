@@ -14,13 +14,13 @@ class BarraVida(Widget):
         self.value = value_max
         self.value_max=value_max
         
-    def render(self,player_hp):
+    def render_vida(self,player_hp):
         super().render()
         self.barra.w = player_hp * self.w / self.value_max
         self.slave_surface.fill(self.color_vida,self.barra)
         
     def update(self,lista_eventos,player_hp):
-        self.render(player_hp)  
+        self.render_vida(player_hp)  
 
     
 

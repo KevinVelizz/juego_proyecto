@@ -3,7 +3,7 @@ from constantes import *
 from auxiliar import Auxiliar
 
 class Platform:
-    def __init__(self, x, y,width,speed,height,move_rate_ms,punto_volver_plat_l,punto_volver_plat_r,speed_up_down,type=1):
+    def __init__(self, x, y,width,speed,height,move_rate_ms,punto_volver_plat_l,punto_volver_plat_r,speed_up_down,type,puntos_volver_plat_up):
 
         self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_IMAGE + "space/Tiles/Tile ({0}).png",15,False,1,1,w=width,h=height)
         self.image = self.image_list[type]
@@ -14,7 +14,8 @@ class Platform:
         self.move_y = 0
         self.punto_volver_plat_l = punto_volver_plat_l
         self.punto_volver_plat_r = punto_volver_plat_r
-        self.punto_volver_plat_up = 300
+        self.punto_volver_plat_up = puntos_volver_plat_up
+
         self.speed_up_down = speed_up_down
 
         self.move_up = False
@@ -26,8 +27,11 @@ class Platform:
         self.speed = speed
         self.collition_rect = pygame.Rect(self.rect)
         self.rect_ground_collition = pygame.Rect(self.rect.x, self.rect.y, self.rect.w, GROUND_COLLIDE_H)
+        self.rect_collition_bala_r = pygame.Rect(self.rect)
         self.tiempo_transcurrido_move = 0
         self.move_rate_ms = move_rate_ms
+
+        self.impacto = False
      
         self.speed_up_down = speed_up_down
 
@@ -49,11 +53,13 @@ class Platform:
         self.rect.x += delta_x
         self.collition_rect.x += delta_x
         self.rect_ground_collition.x += delta_x
+        self.rect_collition_bala_r.x += delta_x
 
     def change_y(self,delta_y):
         self.rect.y += delta_y
         self.collition_rect.y += delta_y
         self.rect_ground_collition.y += delta_y
+        self.rect_collition_bala_r.y += delta_y
 
     def move_platform_x(self):
         if(self.move_r):
@@ -87,7 +93,7 @@ class Platform:
             self.move_up = False
             self.move_down = True
     
-
-
-
-
+    def is_collision_bala(self):
+        if(self.impacto):
+            self.impacto = False
+    

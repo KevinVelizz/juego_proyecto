@@ -8,7 +8,7 @@ class Text:
         self.y = y
         self.text = text
         self.screen = screen
-        self.font = pygame.font.SysFont("Pacifico, cursive",48)
+        self.font = pygame.font.SysFont("Pacifico, cursive",30)
         self.color_text = color_text
         self.text_image = self.font.render(self.text, True,self.color_text)
         self.text_image_rect = self.text_image.get_rect(centerx = self.x,centery = self.y, h = 100 ,w = 100)

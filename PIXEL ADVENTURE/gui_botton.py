@@ -9,6 +9,7 @@ class Button(Widget):
         self.on_click = on_click
         self.on_click_param = on_click_param
         self.state = M_STATE_NORMAL
+        self.render()
         
     def render(self):
         super().render()
@@ -31,6 +32,7 @@ class Button(Widget):
             if evento.type == pygame.MOUSEBUTTONDOWN:
                 if(self.slave_rect_collide.collidepoint(evento.pos)):
                     self.on_click(self.on_click_param)
+                    
 
         
 

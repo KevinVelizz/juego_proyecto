@@ -24,6 +24,8 @@ class Proyectil:
         self.rect_collition_varios_l = pygame.Rect(self.rect.x,self.rect.y,self.rect.w - 20,self.rect.h)
         self.direccion = direccion
         self.explosion_sound = pygame.mixer.Sound("PIXEL ADVENTURE/Recursos/music/explosion.wav")
+        self.explosion_sound.set_volume(0.3)
+        self.is_collision_bala = False
 
     def trayectoria(self):
         if(self.direccion == DIRECTION_R):

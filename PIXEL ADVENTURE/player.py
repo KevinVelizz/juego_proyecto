@@ -38,13 +38,13 @@ class Player:
         self.tiempo_transcurrido_move = 0
         self.direction = DIRECTION_R
         self.live = True
-        self.impact = False
         self.impacto = False
         self.damage_generate = 0
 
         #sonidos
         self.laser_sound = pygame.mixer.Sound("PIXEL ADVENTURE/Recursos/music/laser5.ogg")
-
+        
+        self.hit_sound = pygame.mixer.Sound("PIXEL ADVENTURE/Recursos/music/golpe_de_coco.wav")
         self.hp = 100
 
         self.collition_rect = pygame.Rect(+x+self.rect.width/3,y,self.rect.width/2,self.rect.height)
@@ -158,12 +158,16 @@ class Player:
             if(self.rect_collition_bala_r.colliderect(enemy.rect_collition_bala_l) or self.rect_collition_l.colliderect(enemy.rect_collition_bala_l)):
                 self.animation_frame(self.hit_r)
                 self.animation = self.hit_r
+                self.hit_sound.set_volume(0.3)
+                self.hit_sound.play()
                 self.hp -= 7
                 self.death()
         for trampa in lista_trampas:
             if(self.collition_rect.colliderect(trampa.collition_rect)):
                 self.animation_frame(self.hit_r)
                 self.animation = self.hit_r
+                self.hit_sound.set_volume(0.3)
+                self.hit_sound.play()
                 self.hp -= 3
                 self.death()    
 
@@ -179,7 +183,6 @@ class Player:
             self.animation_frame(self.hit_r)
             self.animation = self.hit_r
             self.death()
-
 
     def disparar(self):
         if(self.direction == DIRECTION_R):
@@ -233,6 +236,7 @@ class Player:
             self.tiempo_transcurrido_move = 0
         self.colision_live(lista_enemigos,lista_trampas)
         self.lista_proyectiles.update(lista_enemigos)
+        self.lista_proyectiles.update(platform_list)
         
     def control(self,lista_eventos):
         for event in lista_eventos:
@@ -244,6 +248,7 @@ class Player:
                 if(event.key == pygame.K_SPACE):
                     self.jump()
                 if(event.key == pygame.K_DOWN):
+                    self.laser_sound.set_volume(0.3)
                     self.laser_sound.play()
                     self.disparar()
                     
@@ -257,7 +262,6 @@ class Player:
                     
                 if event.key == pygame.K_SPACE:
                     self.fall()
-
 
 class PlayerDos(Player):
     def __init__(self, x, y, speed_walk, speed_run, move_rate_ms, gravity, jump, vida, screen) -> None:
