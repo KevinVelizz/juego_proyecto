@@ -14,20 +14,22 @@ class TextBox(Widget):
         
     def render(self):
         super().render()
+        '''
+        El metodo renderiza el texto desde el padre de render de widget.
+        '''
         # if self.state == M_STATE_HOVER: # Se aclara la imagen
         #     self.slave_surface.fill(M_STATE_HOVER, special_flags=pygame.BLEND_RGB_ADD) 
         # elif self.state == M_BRIGHT_CLICK: # Se oscurece la imagen
         #     self.slave_surface.fill(M_BRIGHT_CLICK, special_flags=pygame.BLEND_RGB_SUB) 
 
     def update(self,lista_eventos):
-        mousePos = pygame.mouse.get_pos()
-        self.state = M_STATE_NORMAL
-        if self.slave_rect_collide.collidepoint(mousePos):
-            if(self.writing_flag):
-                self.state = M_BRIGHT_CLICK
-            else:
-                self.state = M_STATE_HOVER
-
+        # mousePos = pygame.mouse.get_pos()
+        # self.state = M_STATE_NORMAL
+        # if self.slave_rect_collide.collidepoint(mousePos):
+        #     if(self.writing_flag):
+        #         self.state = M_BRIGHT_CLICK
+        #     else:
+        #         self.state = M_STATE_HOVER
         for evento in lista_eventos:
             if evento.type == pygame.MOUSEBUTTONDOWN:
                 self.writing_flag = self.slave_rect_collide.collidepoint(evento.pos)

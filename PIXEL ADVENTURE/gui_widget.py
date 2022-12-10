@@ -32,6 +32,9 @@ class Widget:
             self._font_color = font_color
 
     def render(self):
+        '''
+        El metodo mantiene actualizado el widget, ya sea cambio de texto o imagen.
+        '''
         self.slave_rect_collide = pygame.Rect(self.slave_rect)
         self.slave_rect_collide.x += self.master_form.x#le suma las cordenadas del masterform al screen.
         self.slave_rect_collide.y += self.master_form.y

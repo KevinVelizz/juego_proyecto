@@ -16,6 +16,10 @@ class BarraVida(Widget):
         
     def render_vida(self,player_hp):
         super().render()
+        '''
+        El metodo genera la barra de vida del player y la actualiza dependiendo la vida.
+        Recibe por parametro la vida actual del player.
+        '''
         self.barra.w = player_hp * self.w / self.value_max
         self.slave_surface.fill(self.color_vida,self.barra)
         

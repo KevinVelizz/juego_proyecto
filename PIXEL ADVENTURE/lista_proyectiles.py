@@ -11,6 +11,10 @@ class ListProyectil:
         self.path_image = path_image
  
     def generar_balas(self,velocidad,direction,x,y):
+        '''
+        El metodo genera las balas desde donde quiere salir.
+        Recibe por parametro la velocidad de la bala y la direccion en la que se encuentra el enemigo o player y x e y la posición de salida.
+        '''
         self.lista_balas.append(Proyectil(self.pos_xy.x + x,self.pos_xy.y + y,velocidad,direction,self.path_image,self.creador))
    
     def update(self,lista_objetivos):

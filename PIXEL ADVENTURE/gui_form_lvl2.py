@@ -15,76 +15,99 @@ class LevelDos(Form):
         super().__init__(name, master_form, x, y, w, h, color_border, active, image_background, color_background)
 
         self.master_form = master_form
+        self.name = name
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+        self.color_border = color_border
+        self.active = active
+        self.image_background = image_background
+        self.color_background = color_background
+
+        #Info total del lvl 2.
         self.lista_info = Datalevels(master_form,"level_two")
+
+        #Imagen de fondo del lvl 2.
         self.imagen_fondo = pygame.image.load(PATH_IMAGE + self.lista_info.lista_data ["background"]).convert()
         self.imagen_fondo = pygame.transform.scale(self.imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
-        self.player_dos = PlayerDos(100,500,10,10,50,10,15,10,master_form)
-        self.barra_vida = BarraVida(self,x=10,y=10,w=500,h=50,color_background=C_BLACK,color_border=C_BLUE,image_background=None,image_progress=None,value = self.player_dos.hp, value_max=self.player_dos.hp,color_vida=C_WHITE)
+
+        #Player lvl 2 y barra de vida
+        self.barra_vida = BarraVida(self,x=10,y=10,w=500,h=50,color_background=C_BLACK,color_border=C_BLUE,image_background=None,image_progress=None,value = self.lista_info.player.hp, value_max=self.lista_info.player.hp,color_vida=C_WHITE)
+
+        #Lista plataformas.
         self.lista_plataformas = self.lista_info.lista_platform
-        self.contador_puntos = 0
-        self.acumulador_time = 0
-        self.win_lvl2 = self.lista_info.win
-        self.time_juego = 60
-        self.time = Widget(self,600,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.time_juego,"Arial",30,C_BLACK)
-        self.score = Widget(self,1300,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.lista_info.puntos,"Arial",30,C_BLACK)
-        self.win = Widget(self,ANCHO_VENTANA / 2 - 450/2,150,500,300,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/you win.png",None,"Arial",30,C_BLACK)
-        self.lose = Widget(self,ANCHO_VENTANA / 2 - 450/2,170,500,300,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/you lose.png",None,"Arial",30,C_BLACK)
-        self.lista_widget = [self.time,self.score]
-        
+
+        #Lista enemigos.
         self.lista_enemigos = self.lista_info.lista_enemy
 
-        self.tick_1s = pygame.USEREVENT+0
-        pygame.time.set_timer(self.tick_1s,1000)
-       
+        #Lista frutas.
         self.fruits = self.lista_info.list_fruits
 
+        #Puntos
+        self.score = Widget(self,1300,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.lista_info.player.puntos_player,"Arial",30,C_BLACK)
+        self.puntos_totales = self.lista_info.player.puntos_player
+        self.puntos_iniciales = 0
 
+        #Tiempo.
+        self.acumulador_time = 0
+        self.time_juego = 60
+        self.tick_1s = pygame.USEREVENT+0
+        pygame.time.set_timer(self.tick_1s,1000)
+        self.time = Widget(self,600,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.time_juego,"Arial",30,C_BLACK)
+
+        #GANAR O PERDER
+        self.win_lvl2 = self.lista_info.win
+        self.win = Widget(self,ANCHO_VENTANA / 2 - 450/2,150,500,300,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/you win.png",None,"Arial",30,C_BLACK)
+        
+        self.lose_game = False
+        self.lose = Widget(self,ANCHO_VENTANA / 2 - 450/2,170,500,300,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/you lose.png",None,"Arial",30,C_BLACK)
+        
+        
+        #Lista widgets
+        self.lista_widget = [self.time,self.score]
+        
     def draw(self):
         super().draw()
-        self.surface.fill((0,0,0))
+        '''
+        Dibuja en el formulario el fondo.
+        '''
         self.surface.blit(self.imagen_fondo,(0,0))
     
     def resetear(self):
-        self.lista_info = Datalevels(self.master_form,"level_two")
-        self.imagen_fondo = pygame.image.load(PATH_IMAGE + self.lista_info.lista_data ["background"]).convert()
-        self.imagen_fondo = pygame.transform.scale(self.imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
-        self.player_dos = PlayerDos(100,500,10,10,50,10,15,10,self.master_form)
-        self.barra_vida = BarraVida(self,x=10,y=10,w=500,h=50,color_background=C_BLACK,color_border=C_BLUE,image_background=None,image_progress=None,value = self.player_dos.hp, value_max=self.player_dos.hp,color_vida=C_WHITE)
-        self.lista_plataformas = self.lista_info.lista_platform
-        self.lista_enemigos = self.lista_info.lista_enemy
-        self.time_juego = 60
-        self.acumulador_time = 0
-        self.time = Widget(self,600,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.time_juego,"Arial",30,C_BLACK)
-        self.score = Widget(self,1300,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.lista_info.puntos,"Arial",30,C_BLACK)
-        self.win = Widget(self,ANCHO_VENTANA / 2 - 450/2,150,500,300,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/you win.png",None,"Arial",30,C_BLACK)
-        self.lose = Widget(self,ANCHO_VENTANA / 2 - 450/2,170,500,300,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/you lose.png",None,"Arial",30,C_BLACK)
-        self.lista_widget = [self.time,self.score]
-        self.tick_1s = pygame.USEREVENT+0
-        pygame.time.set_timer(self.tick_1s,1000)
-        #frutas
-        self.fruits = self.lista_info.list_fruits
+        '''
+        El metodo resetea el nivel, para volver a jugar.
+        '''
+        self.__init__(self.name,self.master_form,self.x,self.y,self.w,self.h,self.color_border,self.active,self.image_background,self.color_background)
         
-        self.lista_info.puntos = 0
-
     def update(self,delta_ms,lista_events):
-        if(not self.lista_info.win and not self.player_dos.muerte and self.time_juego > 0):
+        '''
+        El metodo updatea todo lo necesario para podrucir el nivel 2.
+        Recibe por parametro el tiempo actual del juego y la lista de eventos.
+        '''
+        if(not self.lista_info.win and not self.lista_info.player.muerte and self.time_juego > 0):
             
-            for aux_boton in self.lista_widget:    
-                aux_boton.draw()
+            #Información total del lvl 2.
+            self.lista_info.update(delta_ms,self.master_form)
+
+            #Widgets.
+            for aux_widget in self.lista_widget:    
+                aux_widget.update(lista_events)
+                aux_widget.draw()
         
-            self.lista_info.update(delta_ms,self.player_dos,self.master_form)
+            #Puntos.
+            self.score._text = self.lista_info.player.puntos_player
+            self.puntos_totales = self.lista_info.player.puntos_player
+            
+            #Cada vez que ingrese al update va a ir modificando el texto del widget score por medio de su metodo render.
 
-            self.time._text = self.time_juego
-            self.score._text = self.lista_info.puntos
-
-            self.time.update(lista_events)
-            self.score.update(lista_events)
-
-            #player_dos
-            self.player_dos.update(delta_ms,self.lista_plataformas,self.lista_enemigos,lista_events,self.lista_info.list_trampas)
-            self.player_dos.draw()
-
-            self.barra_vida.update(lista_events,self.player_dos.hp)
+            #Tiempo.
+            self.time._text = self.time_juego #Cada vez que ingrese al update y al evento "ticks_1" va a ir modificando el texto del widget time por medio de su metodo render.
+    
+            #Player_dos y su barra de vida.
+            self.lista_info.player.update(delta_ms,self.lista_plataformas,self.lista_enemigos,lista_events,self.lista_info.list_trampas)
+            self.lista_info.player.draw()
+            self.barra_vida.update(lista_events,self.lista_info.player.hp)
             self.barra_vida.draw()
 
         if(self.lista_info.win):
@@ -92,12 +115,14 @@ class LevelDos(Form):
             self.win.update(lista_events)
             self.win.draw()
             self.display_finish_lvl(delta_ms)
+            self.forms_dict["levels"].condicion_lvl3 = True
 
-        elif(self.player_dos.muerte or self.time_juego <= 0):
+
+        elif(self.lista_info.player.muerte or self.time_juego <= 0):
             self.lose.update(lista_events)
             self.lose.draw()
             self.display_finish_lvl(delta_ms)
-        
+
         for event in lista_events:
             if(event.type == pygame.KEYDOWN):
                 if(event.key == pygame.K_ESCAPE):
@@ -106,12 +131,20 @@ class LevelDos(Form):
                 self.time_juego -= 1
        
     def display_finish_lvl(self,delta_ms):
-        self.contador_puntos = self.lista_info.puntos
+        '''
+        El metodo activa segun la condicion un formulario cuando finaliza el nivel, ya sea consiguiendo el objetivo o perdiendo por muerte o tiempo y resetea el nivel.
+        '''
         self.acumulador_time += delta_ms
         if(self.acumulador_time >= 2000):
-            self.set_active("name_player")
-            self.forms_dict["name_player"].nivel_actual = "nivel_dos"
+            
+            self.set_active("levels")
+            
+            self.forms_dict["level_tres"].lista_info.player.puntos_player = self.puntos_totales
+
             self.resetear()
             self.acumulador_time = 0
+        
+
+
 
         

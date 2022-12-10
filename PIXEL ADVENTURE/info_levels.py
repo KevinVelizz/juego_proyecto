@@ -13,6 +13,7 @@ class Datalevels:
         self.lvl = lvl     
         self.lista_data = cargar_json_data("PIXEL ADVENTURE/levels.json")[0][self.lvl]
         self.screen = screen
+        self.player = Player(100,540,10,10,50,10,15,10,screen)
         self.lista_enemy = []
         self.lista_platform = []
         self.list_fruits = []
@@ -22,9 +23,11 @@ class Datalevels:
         self.create_platforms()
         self.create_fruits()
         self.win = False
-        self.puntos = 0
 
     def create_ememies(self):
+        '''
+        El metodo crea la lista de enemigos para cada nivel desde la información exportada del json.
+        '''
         for enemy in self.lista_data["enemys"]:
             if(self.lvl == "level_one"):
                 if(enemy["name"] == "chanchito"):
@@ -51,6 +54,9 @@ class Datalevels:
                         self.lista_enemy.append(EnemyPlant(enemy["position_x"][i],enemy["position_y"][i],enemy["speed"][i],50,50,self.screen))
 
     def create_platforms(self):
+        '''
+        El metodo crea la lista de plataformas para cada nivel desde la información exportada del json.
+        '''
         for platform in self.lista_data["platforms"]:
             if(platform["name"] == "left_wall"):
                 for i in range(platform["amount"]):
@@ -73,7 +79,9 @@ class Datalevels:
                     self.lista_platform.append(Platform(platform["position_x"][i],platform["position_y"][i],platform["width"],platform["speed"][i],platform["height"],50,platform["point_move_l"][i],platform["point_move_r"][i],platform["speed_up_down"],platform["type"][i],platform["punto_volver_plat_up"][i]))
 
     def create_fruits(self):
-        
+        '''
+        El metodo crea la lista de frutas para cada nivel desde la información exportada del json.
+        '''
         self.win = False
         for fruit in self.lista_data["fruits"]:
             if(fruit["name"] == "apple"):
@@ -84,12 +92,19 @@ class Datalevels:
                     self.list_fruits.append(Fruta(fruit["position_x"][i],fruit["position_y"][i],50,fruit["speed"][i]))
 
     def create_trampas(self):
+        '''
+        El metodo crea la lista de trampas para cada nivel desde la información exportada del json.
+        '''
         for trampa in self.lista_data["trampas"]:
             if(trampa["name"] == "cierra"):
                 for i in range(trampa["amount"]):
                     self.list_trampas.append(Trampa(trampa["position_x"][i],trampa["position_y"][i],50,self.screen))
 
-    def update(self,delta_ms,player,screen):
+    def update(self,delta_ms,screen):
+        '''
+        Updatea y dibuja las trampas, plataformas,enemigos y frutas.
+        Recibe por parametro el tiempo actual del juego y la pantalla.
+        '''
         for trampa in self.list_trampas:
             trampa.update(delta_ms)
             trampa.draw()
@@ -99,17 +114,17 @@ class Datalevels:
             platform.draw(self.screen)
         
         for enemy in self.lista_enemy:
-            enemy.update(delta_ms,player)
+            enemy.update(delta_ms,self.player)
             enemy.draw(self.screen)
             if(not enemy.live):
                 self.lista_enemy.remove(enemy)
-                self.puntos = self.puntos + 50
+                self.player.puntos_player = self.player.puntos_player + 50
 
         for fruit in self.list_fruits:
-            fruit.update(delta_ms,self.lista_platform,player.collition_rect)
+            fruit.update(delta_ms,self.lista_platform,self.player.collition_rect)
             fruit.draw(screen)    
             if(fruit.collision):
-                self.puntos = self.puntos + 50
+                self.player.puntos_player = self.player.puntos_player + 50
                 self.list_fruits.remove(fruit)
 
             if(len(self.list_fruits) <= 0):

@@ -9,53 +9,57 @@ class FormRanking(Form):
     def __init__(self, name, master_surface, x, y, w, h, color_border, active, image_background=None, color_background=None):
         super().__init__(name, master_surface, x, y, w, h, color_border, active, image_background, color_background)
 
-        self.data_player = readRows2(name)
+        self.data_player = readRows()
         self.name = name
+        self.lista_widgets_puntos = []   
+        self.lista_widgets_name = []
+        self.eje_y = 110              
 
-        self.name_player = Widget(master_form=self,x=60,y=110,w=160,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[0][1],font="Arial",font_size=40,font_color=C_BLACK)
+        for i in range(4):
+            self.lista_widgets_name.append(Widget(master_form=self,x=60,y=self.eje_y,w=160,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[i][1],font="Arial",font_size=40,font_color=C_BLACK))
 
-        self.name_player2 = Widget(master_form=self,x=60,y=180,w=160,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[1][1],font="Arial",font_size=40,font_color=C_BLACK)
+            self.lista_widgets_puntos.append(Widget(master_form=self,x=240,y=self.eje_y,w=100,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[i][2],font="Arial",font_size=40,font_color=C_BLACK))
+            self.eje_y += 70
 
-        self.name_player3 = Widget(master_form=self,x=60,y=250,w=160,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[2][1],font="Arial",font_size=40,font_color=C_BLACK)
+        self.boton_name_ranking = Widget(master_form=self,x=150,y=20,w=100,h=150,color_background=None,color_border=None,image_background=None,text= "Score",font="Arial",font_size=40,font_color=C_BLACK)
+        
+        self.boton_atras = Button(master=self,x=0,y=500,w=100,h=80,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/Back.png",on_click=self.on_click_boton1,on_click_param="ranking",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
 
-        self.puntos_player = Widget(master_form=self,x=240,y=110,w=70,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[0][2],font="Arial",font_size=40,font_color=C_BLACK)
-
-        self.puntos_player2 = Widget(master_form=self,x=240,y=180,w=70,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[1][2],font="Arial",font_size=40,font_color=C_BLACK)
-    
-        self.puntos_player3 = Widget(master_form=self,x=240,y=250,w=70,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[2][2],font="Arial",font_size=40,font_color=C_BLACK)
-
-        self.score = Widget(master_form=self,x=150,y=20,w=100,h=150,color_background=None,color_border=None,image_background=None,text= "Score",font="Arial",font_size=40,font_color=C_BLACK)
-    
-        self.atras = Button(master=self,x=0,y=500,w=100,h=80,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/Back.png",on_click=self.on_click_boton1,on_click_param="ranking",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
-
-        self.lista_widget = [self.atras,self.score,self.name_player,self.name_player2,self.name_player3,self.puntos_player,self.puntos_player2,self.puntos_player3]
+        self.lista_widget = [self.boton_name_ranking,self.boton_atras]
 
     def on_click_boton1(self, parametro):
         self.set_active(parametro)
     
     def update(self,lista_eventos):
-        
-        self.data_player = readRows2(self.name)
+        self.data_player = readRows()
+        self.updatear_ranking(lista_eventos)
     
-        self.name_player._text = self.data_player[0][1]
-        self.puntos_player._text = self.data_player[0][2]
-    
-        self.name_player2._text = self.data_player[1][1]
-        self.puntos_player2._text = self.data_player[1][2]
-    
-        self.name_player3._text = self.data_player[2][1]
-        self.puntos_player3._text = self.data_player[2][2]
-
-        for aux_widget in self.lista_widget:
-            aux_widget.update(lista_eventos)
-
     def draw(self): 
         super().draw()
         self.surface.blit(self.image_background,self.image_background_rect)
-        for aux_boton in self.lista_widget:    
-            aux_boton.draw()
+        for widget_name in self.lista_widgets_name:    
+            widget_name.draw()
+        for aux in self.lista_widget:
+            aux.draw()
+        for widget_puntos in self.lista_widgets_puntos:
+            widget_puntos.draw()
         
+    def updatear_ranking(self,lista_eventos):
+        '''
+        El metodo va manteniendo constantemente la base de datos actualizados, sin necesidad de salir para mostrar los puntos finales.
+        Recibe por parametro la lista de eventos.
+        '''
 
+        for i in range(len(self.lista_widgets_name)):
+            self.lista_widgets_name[i]._text = self.data_player[i][1]
 
+            self.lista_widgets_puntos[i]._text = self.data_player[i][2]
+
+        for widget_name in self.lista_widgets_name:
+            widget_name.update(lista_eventos)
+        for widget_puntos in self.lista_widgets_puntos:
+            widget_puntos.update(lista_eventos)
+        for aux in self.lista_widget:
+            aux.update(lista_eventos)
     
 

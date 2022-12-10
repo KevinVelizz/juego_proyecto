@@ -22,21 +22,25 @@ class FormOptions(Form):
     
         self.pb1 = ProgressBar(master=self,x=650,y=250,w=240,h=50,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Other/Shadow.png",image_progress="PIXEL ADVENTURE/Recursos/Other/Confetti (16x16).png",value = 8, value_max=8)
 
-        self.mute_desmute = Button(master=self,x=700,y=350,w=150,h=50,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/96.png",on_click=self.on_click_boton_mute_desmute,on_click_param="options",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
+        self.mute_desmute = Button(master=self,x=700,y=330,w=150,h=50,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/96.png",on_click=self.on_click_boton_mute_desmute,on_click_param="options",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
 
         self.text_sound = Widget(master_form=self,x=650,y=190,w=240,h=50,color_background=None,color_border=None,image_background=None,text="SOUND",font="Arial",font_size=40,font_color=C_BLACK)
-
-
 
         self.lista_widget = [self.back,self.subir,self.bajar,self.pb1,self.text_sound,self.mute_desmute]
 
     def on_click_subir_vol(self,parametro):
+        '''
+        El metodo sube el volumen de la barra de sonido.
+        '''
         if(self.pb1.value < self.pb1.value_max and self.mute_desmute.path_image != self.off):
             self.pb1.value += 1
             pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() + 0.1)
             self.sonido_fondo += 0.1
             
     def on_click_bajar_vol(self,parametro):
+        '''
+        El metodo baja el volumen de la barra de musica.
+        '''
         if(self.pb1.value >= 0 and self.mute_desmute.path_image != self.off):
             self.pb1.value -= 1
             pygame.mixer.music.set_volume(pygame.mixer.music.get_volume() - 0.1)
@@ -45,6 +49,9 @@ class FormOptions(Form):
                 pygame.mixer.music.set_volume(0.0)
 
     def on_click_boton_mute_desmute(self,parametro):
+        '''
+        El metodo mutea o desmutea la musica.
+        '''
         if(self.mute_desmute.path_image == self.on):
             self.mute_desmute.path_image = self.off
             pygame.mixer.music.set_volume(0.0)

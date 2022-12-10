@@ -36,6 +36,10 @@ class Platform:
         self.speed_up_down = speed_up_down
 
     def draw(self,screen):
+        '''
+        Dibuja la plataforma y los rectagunlos en caso de ser necesario.
+        Recibe por parametro la pantalla. 
+        '''
         screen.blit(self.image,self.rect)
         if(DEBUG):
             pygame.draw.rect(screen,color=(255,0 ,0),rect=self.collition_rect)
@@ -50,18 +54,29 @@ class Platform:
             self.tiempo_transcurrido_move = 0
 
     def change_x(self,delta_x):
+        '''
+        El metodo produce el movimiento del rectangulo del mismo de manera horizontal y seguida de sus rectangulos correspondiente.
+        Recibe por parametro el delta_x.
+        '''
         self.rect.x += delta_x
         self.collition_rect.x += delta_x
         self.rect_ground_collition.x += delta_x
         self.rect_collition_bala_r.x += delta_x
 
     def change_y(self,delta_y):
+        '''
+        El metodo produce el movimiento del rectangulo del mismo de manera vertical y seguida de sus rectangulos correspondiente.
+        Recibe por parametro el delta_y.
+        '''
         self.rect.y += delta_y
         self.collition_rect.y += delta_y
         self.rect_ground_collition.y += delta_y
         self.rect_collition_bala_r.y += delta_y
 
     def move_platform_x(self):
+        '''
+        El metodo mueve la plataforma de manera horizontal dependiendo el speed ingresado.
+        '''
         if(self.move_r):
             self.move_x = self.speed
             self.change_x(self.move_x)
@@ -70,6 +85,9 @@ class Platform:
             self.change_x(self.move_x)
 
     def move_platform_y(self):
+        '''
+        El metodo mueve la plataforma de manera vertical dependiendo el speed ingresado.
+        '''
         if(self.move_up):
             self.move_y = -self.speed_up_down
             self.change_y(self.move_y)
@@ -78,6 +96,9 @@ class Platform:
             self.change_y(self.move_y)
 
     def punto_volver(self):
+        '''
+        El metodo verifica la posicion de la plataforma y dependiendo la ubicación del rect se produce los eventos.
+        '''
         if(self.rect.x >= self.punto_volver_plat_r and self.rect.y >= 550):
             self.move_r = False
             self.move_l = True
@@ -94,6 +115,9 @@ class Platform:
             self.move_down = True
     
     def is_collision_bala(self):
+        '''
+        El metodo verifica si la bala colision con la plataforma para luego poder removerla de la lista.
+        '''
         if(self.impacto):
             self.impacto = False
     

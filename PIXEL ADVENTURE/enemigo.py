@@ -43,6 +43,10 @@ class Enemy:
 
 
     def spawn(self,direction):
+        '''
+        El metodo posiciona de manera quieta al enemigo dependiendo la direccion.
+        Recibe la direccion del enemigo.
+        '''
         self.tiempo_spawn = pygame.time.get_ticks() 
         self.direction = direction
         if(direction == DIRECTION_R):
@@ -52,6 +56,10 @@ class Enemy:
         self.frame = 0
 
     def draw(self,screen):
+        '''
+        El metodo dibuja en la pantalla los rectangulos generados en caso de ser necesario.
+        Y dibuja al enemigo en la pantalla.
+        '''
         if(DEBUG):
             pygame.draw.rect(screen,color=(255,255,255),rect=self.rect_vision)
             pygame.draw.rect(screen,color=(255,0,0),rect=self.collition_rect)
@@ -64,6 +72,10 @@ class Enemy:
             screen.blit(self.image,self.rect)
     
     def do_movement(self,delta_ms):
+        '''
+        El metodo mueve el player llamando a los metodos de movimientos despues de producir el evento necesario y dependiendo el tiempo establecido.
+        Recibe por parametro el tiempo actual del juego para así generar un delay en el movimiento.
+        '''
         self.tiempo_transcurrido_move += delta_ms
         if(self.tiempo_transcurrido_move >= self.move_rate_ms):
             self.tiempo_transcurrido_move = 0
@@ -72,6 +84,10 @@ class Enemy:
             self.change_y(self.move_y)
 
     def do_animation(self,delta_ms):
+        '''
+        El metodo va restableciendo los frames del spritesheet cada vez que llega al final del mismo.
+        Recibe el tiempo actual del juego para así generar un delay en la animación del enemigo.
+        '''
         self.tiempo_transcurrido_animation += delta_ms
         if(self.tiempo_transcurrido_animation >= self.frame_rate_ms):
             self.tiempo_transcurrido_animation = 0
@@ -81,10 +97,18 @@ class Enemy:
                 self.frame = 0
 
     def update(self,delta_ms,player):
+        '''
+        El metodo llama a los anteriores metodos para ejecutarlos de manera continua en el main de juego.
+        Recibe por parametro lo necesario para cada metodo que necesite algún objeto enemigo.
+        '''
         self.do_movement(delta_ms)
         self.do_animation(delta_ms) 
 
     def change_x(self,delta_x):
+        '''
+        El metodo produce el movimiento de los rectangulos siguiendo el rectangulo del enemigo de manera horizontal.
+        Recibe por parametro el delta_x que es el "speed" ingresado.
+        '''
         self.rect.x += delta_x
         self.collition_rect.x += delta_x
         self.rect_ground_collition.x += delta_x
@@ -93,6 +117,10 @@ class Enemy:
         self.rect_collition_bala_l.x += delta_x 
  
     def change_y(self,delta_y):
+        '''
+        El metodo produce el movimiento de los rectangulos siguiendo el rectangulo del enemigo de manera vertical.
+        Recibe por parametro el delta_y.
+        '''
         self.rect.y += delta_y
         self.collition_rect.y += delta_y
         self.rect_ground_collition.y += delta_y
@@ -101,6 +129,9 @@ class Enemy:
         self.rect_collition_bala_l.y += delta_y
 
     def animation_frame(self,animation):
+        '''
+        El metodo vuelve los frame a 0 si la animación es distinta a la ingresada, o sea, en caso de cambiar la animacion con una cantidad mayor o menor de frame la vuelve a 0.
+        '''
         if(self.animation != animation):
             self.frame = 0
                 
@@ -118,6 +149,10 @@ class EnemyGreen(Enemy):
         self.rect_vision = pygame.Rect(self.rect.x - 270,self.rect.y,self.rect.w + 200,self.rect.h)
 
     def x_move(self,delta_ms):
+        '''
+        El metodo mueve al enemigo dependiendo la condición de manera horizontal.
+        Recibe por parametro el tiempo actual del juego.
+        '''
         self.tiempo_transcurrido_move += delta_ms
         if(self.tiempo_transcurrido_move > self.move_rate_ms ):
             self.animation_frame(self.move_l)
@@ -128,10 +163,17 @@ class EnemyGreen(Enemy):
             self.tiempo_colision = 0
 
     def collition_vision(self,pos_xy,delta_ms):
+        '''
+        El metodo detecta si el player colisiona con el rectangulo de vision del enemigo, de ser así, se porducen los eventos.
+        Recibe por parametro la posicion del player y el tiempo actual del juego.
+        '''
         if(self.rect_vision.colliderect(pos_xy)):
             self.x_move(delta_ms)
 
     def is_collision_bala(self):
+        '''
+        El metodo detecta si las balas del player colisionaron con el enemigo, produciendo el cambio de animacion y descuento de vida.
+        '''
         if(self.impacto):
             self.vida -= self.damage_generate
             self.animation_frame(self.hit)
@@ -142,6 +184,10 @@ class EnemyGreen(Enemy):
     
     def update(self,delta_ms,player):
         super().update(delta_ms,player)
+        '''
+        super().update(delta_ms,player) ver linea 99 o update del enemigo padre.
+        El metodo llama al update padre y además llama al metodo de collition vision para poder producir el evento.
+        '''
         self.collition_vision(player.collition_rect,delta_ms)
                 
 class EnemyPlant(Enemy):
@@ -167,12 +213,20 @@ class EnemyPlant(Enemy):
                 self.live = False
 
     def disparar(self,delta_ms):
+        '''
+        El metodo genera las balas y dispara en caso de ser necesario.
+        Recibe por parametro el tiempo actual del juego.
+        '''
         self.tiempo_attack += delta_ms
         if(self.animation == self.attack_planta_l and self.tiempo_attack >= self.frame_rate_ms + 1450):
             self.tiempo_attack = 0
             self.lista_proyectiles.generar_balas(4,self.direction,-30,10)
 
     def attack(self,pos_xy):  
+        '''
+        El metodo hace que el enemigo ataque en caso que el player haya colisionado con el rectangulo de vision del enemigo.
+        Recibe por parametro la posicion del player para detectar dicha condicion de ataque.
+        '''
         if self.rect_vision.colliderect(pos_xy):
             self.animation_frame(self.attack_planta_l)
             self.animation = self.attack_planta_l 
@@ -182,6 +236,11 @@ class EnemyPlant(Enemy):
             
     def update(self,delta_ms,player):
         super().update(delta_ms,player)
+        '''
+        super().update(delta_ms,player) ver linea 99 o el metodo update de class Enemigo.
+        El metodo llama al update padre y además llama al metodo de collition vision para poder producir el evento.
+        Llama al metodo disparar y hace el updatea a la lista de proyectiles.
+        '''
         self.attack(player.collition_rect) 
         self.lista_proyectiles.update([player])
         self.disparar(delta_ms)
@@ -241,7 +300,7 @@ class EnemyRino(Enemy):
         self.move_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Enemies/Rino/Run (52x34).png",6,1,True,1,1.5)
         
         self.hit = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Enemies/Rino/Hit (52x34).png",5,1,False,1,1.5)
-        self.rect_vision = pygame.Rect(self.rect.x - 150,self.rect.y,self.rect.w + 400,self.rect.h)
+        self.rect_vision = pygame.Rect(self.rect.x - 150,self.rect.y,self.rect.w - 400,self.rect.h)
 
     def is_collision_bala(self):
         if(self.impacto):

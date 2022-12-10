@@ -33,6 +33,10 @@ class Form:
             self.image_background_rect = self.image_background.get_rect()
 
     def set_active(self,name):
+        '''
+        El metodo activa el formulario dependiendo el nombre que ingrese por parametro.
+        Recibe por parametro el nombre del formulario.
+        '''
         for aux_form in self.forms_dict.values():
             aux_form.active = False
         self.forms_dict[name].active = True
@@ -44,5 +48,8 @@ class Form:
         pass
 
     def draw(self):
+        '''
+        Blitea el formulario en el scren cuando está activo.
+        '''
         self.master_surface.blit(self.surface,self.slave_rect)
         

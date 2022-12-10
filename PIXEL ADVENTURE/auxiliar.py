@@ -3,6 +3,10 @@ import pygame
 class Auxiliar:
     @staticmethod
     def getSurfaceFromSpriteSheet(path,columnas,filas,flip=False, step = 1,scale=1):
+        '''
+        El metodo genera los fotogramas que van a ser los que producen el efecto de vida a cualquier spritesheet ingresado.
+        Recibe por parametro el path del spritesheet, las filas y columnas del spritesheet, el flip, para poder invertir de manera horizontal el spritesheet, steep en caso de querer saltar un frame y el scale que es para el tamañano deseado.
+        '''
         lista = []
         surface_imagen = pygame.image.load(path).convert_alpha()
         fotograma_ancho = int(surface_imagen.get_width()/columnas)

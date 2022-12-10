@@ -19,7 +19,6 @@ class Fruta:
         self.tiempo_transcurrido = 0
         self.collision = False
         self.collition_fruits = pygame.mixer.Sound("PIXEL ADVENTURE/Recursos/music/recolect_sound.wav")
-        self.collition_fruits.set_volume(0.3)
 
         self.rect_collition = pygame.Rect(self.rect)
 
@@ -68,7 +67,7 @@ class Fruta:
     def collition(self,pos_xy):
         if(self.rect_collition.colliderect(pos_xy)):
             self.collision = True
-            self.collition_fruits.set_volume(0.3)
+            self.collition_fruits.set_volume(1.0)
             self.collition_fruits.play()
             
                             

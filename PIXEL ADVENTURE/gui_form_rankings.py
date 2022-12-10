@@ -10,17 +10,17 @@ class FormClasificaciones(Form):
 
         self.text_ranking = Widget(self,ANCHO_VENTANA/2 - 400/ 2,100,400,150,None,None,"PIXEL ADVENTURE/Recursos/Menu/Banner04.png","RANKING","Arial",40,C_BLACK,)
 
-        self.rank_level_one = Button(master=self,x=ANCHO_VENTANA/2 - 150/ 2,y=250,w=150,h=60,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",on_click=self.on_click_boton1,on_click_param="nivel_uno",text="NIVEL UNO",font="Verdana",font_size=24,font_color=C_BLACK)
+        # self.rank_level_one = Button(master=self,x=ANCHO_VENTANA/2 - 150/ 2,y=250,w=150,h=60,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",on_click=self.on_click_boton1,on_click_param="nivel_uno",text="",font="Verdana",font_size=24,font_color=C_BLACK)
 
-        self.rank_level_two = Button(master=self,x=ANCHO_VENTANA/2 - 150/ 2,y=350,w=150,h=60,color_background=None,color_border=None,
-        image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",on_click=self.on_click_boton1,on_click_param="nivel_dos",text="NIVEL DOS",font="Verdana",font_size=24,font_color=C_BLACK)
+        self.ranking_final = Button(master=self,x=ANCHO_VENTANA/2 - 150/ 2,y=350,w=150,h=60,color_background=None,color_border=None,
+        image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",on_click=self.on_click_boton1,on_click_param="nivel_uno",text="RANKING",font="Verdana",font_size=24,font_color=C_BLACK)
 
-        self.rank_level_tres = Button(master=self,x=ANCHO_VENTANA/2 - 150/ 2,y=450,w=150,h=60,color_background=None,color_border=None,
-        image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",on_click=self.on_click_boton1,on_click_param="nivel_tres",text="NIVEL TRES",font="Verdana",font_size=24,font_color=C_BLACK)
+        # self.rank_level_tres = Button(master=self,x=ANCHO_VENTANA/2 - 150/ 2,y=450,w=150,h=60,color_background=None,color_border=None,
+        # image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",on_click=self.on_click_boton1,on_click_param="nivel_tres",text="NIVEL TRES",font="Verdana",font_size=24,font_color=C_BLACK)
 
         self.back = Button(master=self,x=10,y=700,w=100,h=80,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/Buttons/Back.png",on_click=self.on_click_boton1,on_click_param="Menu",text=None,font="Verdana",font_size=30,font_color=C_WHITE)
 
-        self.lista_widget = [self.rank_level_one,self.rank_level_two,self.rank_level_tres,self.back,self.text_ranking]
+        self.lista_widget = [self.ranking_final,self.back,self.text_ranking]
 
     def on_click_boton1(self, parametro):
         self.set_active(parametro)

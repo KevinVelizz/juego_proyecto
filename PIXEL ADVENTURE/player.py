@@ -25,6 +25,7 @@ class Player:
         self.vida = vida
         self.screen = screen
         self.muerte = False
+        self.puntos_player = 0
     
         self.gravity = gravity
 
@@ -62,10 +63,16 @@ class Player:
         self.collision_wall_l = False
     
     def animation_frame(self,animation):
+        '''
+        El metodo vuelve lo frames a 0 en caso de que la animación sea mayor o menor. Para evitar el error de que se "pasó de len".
+        '''
         if(self.animation != animation):
             self.frame = 0
 
     def walk(self,direction):
+        '''
+        El metodo produce el movimiento de caminar por el mapa.
+        '''
         self.direction = direction
         if(self.direction == DIRECTION_R):
             if(not self.collision_wall_r):
@@ -80,6 +87,9 @@ class Player:
         self.caminando = True
 
     def stay(self):
+        '''
+        El metodo produce el stay en el player, dejandolo quieto en el lugar.
+        '''
         self.caminando = False
         if(self.direction == DIRECTION_R):
             self.animation = self.stay_r
@@ -90,11 +100,17 @@ class Player:
         self.frame = 0
 
     def is_jumpping(self):
+        '''
+        El metodo verifica si el player está saltando o no.
+        '''
         if(self.is_jump):
             if(self.rect.y <= self.limite_jump):
                 self.fall()
 
     def jump(self):  
+        '''
+        El metodo verifica si estoy saltando o no.
+        '''
         if(self.is_on_platform and self.is_jump == False):
             if(self.direction == DIRECTION_R):
                 self.animation = self.jump_r
@@ -108,6 +124,9 @@ class Player:
             self.limite_jump = self.rect.y - 150
 
     def fall(self):
+        '''
+        El metodo genera el movimiento de caida en caso de que no se encuentre en una plataforma.
+        '''
         if(not self.is_on_platform):
             if(self.direction == DIRECTION_R):
                 self.animation = self.fall_r 
@@ -120,6 +139,9 @@ class Player:
             self.move_y = self.gravity
 
     def on_platform(self,platform_list):
+        '''
+        
+        '''
         self.is_on_platform = False
         for platform in platform_list:
             if(self.rect_ground_collition.colliderect(platform.rect_ground_collition)):
@@ -140,6 +162,10 @@ class Player:
                 break
     
     def change_x(self,delta_x):
+        '''
+        El metodo produce el movimiento de manera horizontal de su rectangulo siguiendo también los rectagunlos generados.
+        Recibe la velocidad.
+        '''
         self.rect.x += delta_x
         self.collition_rect.x += delta_x
         self.rect_ground_collition.x += delta_x
@@ -147,6 +173,10 @@ class Player:
         self.rect_collition_l.x += delta_x
 
     def change_y(self,delta_y):
+        '''
+        El metodo produce el movimiento de su rectangulo de manera vertical siguiendo también los rectagunlos generados.
+        Recibe la velocidad.
+        '''
         self.rect.y += delta_y
         self.collition_rect.y += delta_y
         self.rect_ground_collition.y += delta_y
@@ -154,11 +184,14 @@ class Player:
         self.rect_collition_l.y += delta_y
   
     def colision_live(self,lista_enemigos,lista_trampas):
+        '''
+        El metodo verifica la colision del enemigo, bala, o plataforma con el player, en caso de producirse el player pierde vida.
+        '''
         for enemy in lista_enemigos:
             if(self.rect_collition_bala_r.colliderect(enemy.rect_collition_bala_l) or self.rect_collition_l.colliderect(enemy.rect_collition_bala_l)):
                 self.animation_frame(self.hit_r)
                 self.animation = self.hit_r
-                self.hit_sound.set_volume(0.3)
+                self.hit_sound.set_volume(1.0)
                 self.hit_sound.play()
                 self.hp -= 7
                 self.death()
@@ -166,17 +199,24 @@ class Player:
             if(self.collition_rect.colliderect(trampa.collition_rect)):
                 self.animation_frame(self.hit_r)
                 self.animation = self.hit_r
-                self.hit_sound.set_volume(0.3)
+                self.hit_sound.set_volume(1.0)
                 self.hit_sound.play()
                 self.hp -= 3
                 self.death()    
 
     def death(self):
+        '''
+        El player "muere" en caso de que su vida quede en 0
+        '''
         if(self.hp <= 0):
             self.live = False
             self.muerte = True
+            self.puntos_player = 0
 
     def is_collision_bala(self):
+        '''
+        EL metodo verifica si la bala del enemigo colisiona con la del player.
+        '''
         if(self.impacto):
             self.hp -= self.damage_generate
             self.impacto = False
@@ -185,6 +225,9 @@ class Player:
             self.death()
 
     def disparar(self):
+        '''
+        El metodo genera las balas y las coloca en posición que quiera.
+        '''
         if(self.direction == DIRECTION_R):
             self.lista_proyectiles.generar_balas(5,self.direction,50,20)
         else:
@@ -200,6 +243,10 @@ class Player:
             self.screen.blit(self.image,self.rect)
 
     def collision_platform(self,platforms_list):
+        '''
+        El metodo verifica si mis rectangulos de ambos lados colisiona con una plataforma, para poder dejar el self.move_x en 0.
+        Recibe por parametro la lista de plataformas.
+        '''
         self.collision_wall_l = False
         self.collision_wall_r = False
         for platform in platforms_list:
@@ -239,6 +286,10 @@ class Player:
         self.lista_proyectiles.update(platform_list)
         
     def control(self,lista_eventos):
+
+        '''
+        El metodo verifica las teclas ingresadas y el tiempo de juego.
+        '''
         for event in lista_eventos:
             if event.type == pygame.KEYDOWN:
                 if(event.key == pygame.K_RIGHT):
@@ -248,10 +299,9 @@ class Player:
                 if(event.key == pygame.K_SPACE):
                     self.jump()
                 if(event.key == pygame.K_DOWN):
-                    self.laser_sound.set_volume(0.3)
+                    self.laser_sound.set_volume(1.0)
                     self.laser_sound.play()
                     self.disparar()
-                    
     
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
@@ -262,19 +312,3 @@ class Player:
                     
                 if event.key == pygame.K_SPACE:
                     self.fall()
-
-class PlayerDos(Player):
-    def __init__(self, x, y, speed_walk, speed_run, move_rate_ms, gravity, jump, vida, screen) -> None:
-        super().__init__(x, y, speed_walk, speed_run, move_rate_ms, gravity, jump, vida, screen)
-        self.stay_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Idle (32x32).png",11,1,False,1,2)
-        self.stay_l = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Idle (32x32).png",11,1,True,1,2)
-        self.walk_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Run (32x32).png",12,1,False,1,2)
-        self.walk_l = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Run (32x32).png",12,1,True,1,2)
-        self.jump_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Jump (32x32).png",1,1,False,1,2)
-        self.jump_l = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Jump (32x32).png",1,1,True,1,2)
-        self.fall_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Fall (32x32).png",1,1,False,1,2)
-        self.fall_l = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Fall (32x32).png",1,1,True,1,2)
-        self.hit_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Hit (32x32).png",7,1,False,1,2)
-        self.hit_l = Auxiliar.getSurfaceFromSpriteSheet(PATH_IMAGE + "Main Characters/Virtual Guy/Hit (32x32).png",7,1,True,1,2)
-
-        self.lista_proyectiles = ListProyectil(screen,self.rect,"Enemies/Plant/Bullet.png",self)
