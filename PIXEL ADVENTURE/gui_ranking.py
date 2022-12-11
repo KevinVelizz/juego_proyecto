@@ -31,9 +31,9 @@ class FormRanking(Form):
         self.set_active(parametro)
     
     def update(self,lista_eventos):
-        self.data_player = readRows()
         self.updatear_ranking(lista_eventos)
-    
+        self.draw()
+
     def draw(self): 
         super().draw()
         self.surface.blit(self.image_background,self.image_background_rect)
@@ -46,9 +46,10 @@ class FormRanking(Form):
         
     def updatear_ranking(self,lista_eventos):
         '''
-        El metodo va manteniendo constantemente la base de datos actualizados, sin necesidad de salir para mostrar los puntos finales.
+        El metodo va manteniendo constantemente la información de la base de datos, sin necesidad de salir para mostrar los puntos finales.
         Recibe por parametro la lista de eventos.
         '''
+        self.data_player = readRows()
 
         for i in range(len(self.lista_widgets_name)):
             self.lista_widgets_name[i]._text = self.data_player[i][1]

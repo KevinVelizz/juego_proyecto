@@ -86,7 +86,6 @@ while True:
 
     elif(ranking1.active):
         ranking1.update(lista_events)
-        ranking1.draw()
 
 
     pygame.display.flip()  

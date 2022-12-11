@@ -191,7 +191,7 @@ class Player:
             if(self.rect_collition_bala_r.colliderect(enemy.rect_collition_bala_l) or self.rect_collition_l.colliderect(enemy.rect_collition_bala_l)):
                 self.animation_frame(self.hit_r)
                 self.animation = self.hit_r
-                self.hit_sound.set_volume(1.0)
+                self.hit_sound.set_volume(0.4)
                 self.hit_sound.play()
                 self.hp -= 7
                 self.death()
@@ -199,7 +199,7 @@ class Player:
             if(self.collition_rect.colliderect(trampa.collition_rect)):
                 self.animation_frame(self.hit_r)
                 self.animation = self.hit_r
-                self.hit_sound.set_volume(1.0)
+                self.hit_sound.set_volume(0.4)
                 self.hit_sound.play()
                 self.hp -= 3
                 self.death()    
@@ -299,7 +299,7 @@ class Player:
                 if(event.key == pygame.K_SPACE):
                     self.jump()
                 if(event.key == pygame.K_DOWN):
-                    self.laser_sound.set_volume(1.0)
+                    self.laser_sound.set_volume(0.4)
                     self.laser_sound.play()
                     self.disparar()
     

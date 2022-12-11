@@ -67,7 +67,7 @@ class Fruta:
     def collition(self,pos_xy):
         if(self.rect_collition.colliderect(pos_xy)):
             self.collision = True
-            self.collition_fruits.set_volume(1.0)
+            self.collition_fruits.set_volume(0.4)
             self.collition_fruits.play()
             
                             
