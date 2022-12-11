@@ -1,6 +1,5 @@
 <h1 align="center">Juego 2D animado.</h1>
 
-- Soy Veliz Kevin, estudiante de 1er año en la Universidad Tecnológica Nacional de Avellaneda en la tecnicatura en programación. 
 
 El proyecto está abierto a cambios.</br>
 El proyecto está estructurado por [Python](https://www.python.org/ "Python")
@@ -26,6 +25,15 @@ Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, c
 <h3>5. Video de descarga e instalación</h3>
 
 Click [aquí](https://youtu.be/gRpY-ty3alU "aquí")
+
+<h3>6. Bugs conocidos y posibles correcciones de errores.</h3>
+- Las balas del enemigo desaparecen cuando muere el mismo.
+- El personaje se "pega" a la pared cuando salta o baja.
+
+<h3>Un poco sobre mí</h3>
+
+Soy Veliz Kevin, tengo 20 años soy, estudiante de 1er año en la Universidad Tecnológica Nacional de Avellaneda en la tecnicatura en programación. Cursando el 1er cuatrimestre y adentrandome en este gran mundo. 
+Soy un joven entuciasta, autodidacta, comprometido y con ganas de aprender constantemente.
 
 <h3 align="left">Contactate conmigo:</h3>
 <p align="left">
