@@ -5,6 +5,7 @@
 El proyecto está abierto a cambios.</br>
 El proyecto está estructurado por [Python](https://www.python.org/ "Python")
 
+
 El juego se maneja por una serie de formularios que se encuentran de una manera inactiva. Lo que hacen estos formularios es contener la información necesaria de pantalla de juego, opciones,ranking,etc. en caso de ser activado alguno de dichos formularios se desactiva el anterior, produciendo que se muestre lo deseado.
 
 <h2>Funcionamiento del juego.</h2>
@@ -23,7 +24,8 @@ Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, c
 ![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)
 
 <h3>5. Video de descarga e instalación</h3>
-Click [aquí](https://youtu.be/gRpY-ty3alU/ "aquí")
+
+Click [aquí](https://youtu.be/gRpY-ty3alU "aquí")
 
 <h3 align="left">Contactate conmigo:</h3>
 <p align="left">
