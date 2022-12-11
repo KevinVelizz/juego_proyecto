@@ -24,7 +24,7 @@ Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, c
 ![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)
 
 <h3>5. Video de descarga e instalación</h3>
-Click [aquí](http://https://youtu.be/gRpY-ty3alU "aquí")
+Click [aquí](https://youtu.be/gRpY-ty3alU "aquí")
 
 <h3 align="left">Contactate conmigo:</h3>
 <p align="left">
