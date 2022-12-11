@@ -10,18 +10,20 @@ El proyecto se caracteriza por una secuenca de formularios que están en modo in
 
 <h4><b>Funcionamiento del juego.</b></4>
 
-<b>1.  Concepto Principal</b><br>
-El objetivo es recolectar todas las frutas que encontraras en cada nivel, sumando puntos y acumulandolos hasta el último nivel. WARNING ten cuidado de no quedarte sin tiempo, no intentes reiniciar el nivel porque perderas los puntos al igual si morís, intenta conseguir los niveles de manera continua.
+<b>1.  Concepto Principal</b>
 
-<b>2. Gameplay</b><br>
-El juego es basico ir recolectando las frutas, con una barra de vida y tiempo, trampas que evitar y enemigos que aniquilar. 
+<p>El objetivo es recolectar todas las frutas que encontraras en cada nivel, sumando puntos y acumulandolos hasta el último nivel. WARNING ten cuidado de no quedarte sin tiempo, no intentes reiniciar el nivel porque perderas los puntos al igual si morís, intenta conseguir los niveles de manera continua.</p>
 
-<b>3. Sonido</b><br>
-Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, colision, impacto de bala y en el menú lo necesario para variar el volumen.
+<b>2. Gameplay</b>
 
-<b>4. Controles de juego</b><br>
+<p>El juego es basico ir recolectando las frutas, con una barra de vida y tiempo, trampas que evitar y enemigos que aniquilar.</p>
 
-![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)
+<b>3. Sonido</b>
+<p>Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, colision, impacto de bala y en el menú lo necesario para variar el volumen.</p>
+
+<b>4. Controles de juego</b>
+
+<br>![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)</br>
 
 <br>
 <h3 align="left">Contactate conmigo:</h3>
