@@ -1,12 +1,12 @@
 <h1 align="center">Juego 2D animado.</h1>
 
 
-- Estudiante de 1er año en la Universidad Tecnológica Nacional de Avellaneda en la tecnicatura en programación. 
+- Soy Veliz Kevin, estudiante de 1er año en la Universidad Tecnológica Nacional de Avellaneda en la tecnicatura en programación. 
 
-El proyecto está abierto a cambios.
+El proyecto está abierto a cambios.</br>
 El proyecto está estructurado por [Python](https://www.python.org/ "Python")
 
-El proyecto se caracteriza por una secuenca de formularios que están en modo inactivo y en el momento de hacer "click"en los botones va ir activando los formularios.
+El juego se maneja por una serie de formularios que se encuentran de una manera inactiva. Lo que hacen estos formularios es contener la información necesaria de pantalla de juego, opciones,ranking,etc. en caso de ser activado alguno de dichos formularios se desactiva el anterior, produciendo que se muestre lo deseado.
 
 <h2>Funcionamiento del juego.</h2>
 <h3>1.  Concepto Principal</h3>
@@ -23,11 +23,12 @@ Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, c
 
 ![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)
 
-<br>
+<h3>5. Video de descarga e instalación</h3>
+Click [aquí](http://https://youtu.be/gRpY-ty3alU "aquí")
 
 <h3 align="left">Contactate conmigo:</h3>
 <p align="left">
-<a href="https://linkedin.com/in/kevin veliz" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="kevin veliz" height="30" width="40" /><br></a>
+<a href="https://linkedin.com/in/kevin-veliz-2a5220200/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="kevin veliz" height="30" width="40" /><br></a>
 </br>
 <a href="https://instagram.com/kevinvelizz__" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="kevinvelizz__" height="30" width="40" /></a>
 </p>
