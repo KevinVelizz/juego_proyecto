@@ -8,27 +8,27 @@ El proyecto está estructurado por [Python](https://www.python.org/ "Python")
 
 El proyecto se caracteriza por una secuenca de formularios que están en modo inactivo y en el momento de hacer "click"en los botones va ir activando los formularios.
 
-<h3><strong>Funcionamiento del juego.</h3>
+### Funcionamiento del juego.
+#### **1.  Concepto Principal**
 
-<strong>1.  Concepto Principal
+El objetivo es recolectar todas las frutas que encontraras en cada nivel, sumando puntos y acumulandolos hasta el último nivel. WARNING ten cuidado de no quedarte sin tiempo, no intentes reiniciar el nivel porque perderas los puntos al igual si morís, intenta conseguir los niveles de manera continua.
 
-<p>El objetivo es recolectar todas las frutas que encontraras en cada nivel, sumando puntos y acumulandolos hasta el último nivel. WARNING ten cuidado de no quedarte sin tiempo, no intentes reiniciar el nivel porque perderas los puntos al igual si morís, intenta conseguir los niveles de manera continua.</p>
+#### **2. Gameplay **
+El juego es basico ir recolectando las frutas, con una barra de vida y tiempo, trampas que evitar y enemigos que aniquilar. 
 
-<strong>2. Gameplay
+#### **3. Sonido **
+Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, colision, impacto de bala y en el menú lo necesario para variar el volumen.
 
-<p>El juego es basico ir recolectando las frutas, con una barra de vida y tiempo, trampas que evitar y enemigos que aniquilar.</p>
+#### **4. Controles de juego **
 
-<strong>3. Sonido
-<p>Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, colision, impacto de bala y en el menú lo necesario para variar el volumen.</p>
-
-<strong>4. Controles de juego
-
-<br>![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)</br>
+![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)
 
 <br>
+
 <h3 align="left">Contactate conmigo:</h3>
 <p align="left">
 <a href="https://linkedin.com/in/kevin veliz" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="kevin veliz" height="30" width="40" /><br></a>
+<br>
 <a href="https://instagram.com/kevinvelizz__" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="kevinvelizz__" height="30" width="40" /></a>
 </p>
 
