@@ -9,16 +9,16 @@ El proyecto está estructurado por [Python](https://www.python.org/ "Python")
 El proyecto se caracteriza por una secuenca de formularios que están en modo inactivo y en el momento de hacer "click"en los botones va ir activando los formularios.
 
 ### Funcionamiento del juego.
-#### **1.  Concepto Principal**
+<b>1.  Concepto Principal</b>
 El objetivo es recolectar todas las frutas que encontraras en cada nivel, sumando puntos y acumulandolos hasta el último nivel. WARNING ten cuidado de no quedarte sin tiempo, no intentes reiniciar el nivel porque perderas los puntos al igual si morís, intenta conseguir los niveles de manera continua.
 
-#### **2. Gameplay **
+<b>2. Gameplay</b>
 El juego es basico ir recolectando las frutas, con una barra de vida y tiempo, trampas que evitar y enemigos que aniquilar. 
 
-#### **3. Sonido **
+<b>3. Sonido</b>
 Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, colision, impacto de bala y en el menú lo necesario para variar el volumen.
 
-#### **4. Controles de juego **
+<b>4. Controles de juego</b>
 
 ![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)
 
