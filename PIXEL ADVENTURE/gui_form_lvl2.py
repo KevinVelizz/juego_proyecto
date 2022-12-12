@@ -34,6 +34,7 @@ class LevelDos(Form):
 
         #Player lvl 2 y barra de vida
         self.barra_vida = BarraVida(self,x=10,y=10,w=500,h=50,color_background=C_BLACK,color_border=C_BLUE,image_background=None,image_progress=None,value = self.lista_info.player.hp, value_max=self.lista_info.player.hp,color_vida=C_WHITE)
+        self.image_vida = Widget(self,512,10,45,45,None,None,"PIXEL ADVENTURE/Recursos/Menu/heart.png",None,"Arial",None,None)
 
         #Lista plataformas.
         self.lista_plataformas = self.lista_info.lista_platform
@@ -54,7 +55,8 @@ class LevelDos(Form):
         self.time_juego = 60
         self.tick_1s = pygame.USEREVENT+0
         pygame.time.set_timer(self.tick_1s,1000)
-        self.time = Widget(self,600,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.time_juego,"Arial",30,C_BLACK)
+        self.time = Widget(self,650,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.time_juego,"Arial",30,C_BLACK)
+        self.image_time = Widget(self,850,5,50,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/clock.png",None,"Arial",None,None)
 
         #GANAR O PERDER
         self.win_lvl2 = self.lista_info.win
@@ -65,7 +67,7 @@ class LevelDos(Form):
         
         
         #Lista widgets
-        self.lista_widget = [self.time,self.score]
+        self.lista_widget = [self.time,self.score,self.image_vida,self.image_time]
         
     def draw(self):
         super().draw()

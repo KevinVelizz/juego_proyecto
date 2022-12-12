@@ -35,13 +35,15 @@ class LevelTres(Form):
 
         #Barra de vida del player.
         self.barra_vida = BarraVida(self,x=10,y=10,w=500,h=50,color_background=C_BLACK,color_border=C_BLUE,image_background=None,image_progress=None,value = self.lista_info.player.hp, value_max=self.lista_info.player.hp,color_vida=C_WHITE)
+        self.image_vida = Widget(self,512,10,45,45,None,None,"PIXEL ADVENTURE/Recursos/Menu/heart.png",None,"Arial",None,None)
         
         #Tiempo juego.
         self.acumulador_time = 0
         self.time_juego = 60
-        self.time = Widget(self,600,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.time_juego,"Arial",30,C_BLACK)
+        self.time = Widget(self,650,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.time_juego,"Arial",30,C_BLACK)
         self.tick_1s = pygame.USEREVENT+0
         pygame.time.set_timer(self.tick_1s,1000)
+        self.image_time = Widget(self,850,5,50,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/clock.png",None,"Arial",None,None)
 
         #Puntos.
         self.score = Widget(self,1300,0,200,50,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/fondo_botones.png",self.lista_info.player.puntos_player,"Arial",30,C_BLACK)
@@ -53,7 +55,7 @@ class LevelTres(Form):
         self.lose = Widget(self,ANCHO_VENTANA / 2 - 450/2,170,500,300,None,None,"PIXEL ADVENTURE/Recursos/Menu/Buttons/you lose.png",None,"Arial",30,C_BLACK)
 
         #Listas.
-        self.lista_widget = [self.time,self.score]
+        self.lista_widget = [self.time,self.score,self.image_time,self.image_vida]
 
         self.lista_fruits = self.lista_info.list_fruits
 
@@ -86,7 +88,8 @@ class LevelTres(Form):
             self.lista_info.update(delta_ms,self.master_form)
 
             #Widgets.
-            for aux_boton in self.lista_widget:    
+            for aux_boton in self.lista_widget: 
+                aux_boton.update(lista_events)   
                 aux_boton.draw()
 
             #Puntos.
