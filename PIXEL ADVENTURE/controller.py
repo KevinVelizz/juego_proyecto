@@ -74,7 +74,7 @@ def readRows():#Selecciona solo una fila
     cursor.execute(instruccion)
     datos = cursor.fetchall()#devolver todos los datos seleccionados
     conn.commit()
-    conn.close()
+    conn.close()    
     return datos
 
 def readRows2(lvl):#Selecciona solo una fila

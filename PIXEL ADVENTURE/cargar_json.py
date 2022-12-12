@@ -2,7 +2,6 @@ import pygame
 import json
 from constantes import *
 
-
 def cargar_json_data(path:str) -> list:
     '''
     La funcion importa los datos del json.
@@ -13,4 +12,3 @@ def cargar_json_data(path:str) -> list:
         lista = json.load(file)
     return lista["levels"]
 
-lista_info = cargar_json_data("PIXEL ADVENTURE/levels.json")[0]["level_one"]
