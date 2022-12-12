@@ -38,14 +38,14 @@ class FormLevels(Form):
         for aux_boton in self.lista_widget:
             aux_boton.update(lista_eventos)
 
-        if(self.condicion_lvl2):
-            self.level2.on_click_param = "level_dos"
-        else:
-            self.level2.on_click_param = "levels"
-        if(self.condicion_lvl3):
-            self.level3.on_click_param = "level_tres"
-        else:
-            self.level3.on_click_param = "levels"
+        # if(self.condicion_lvl2):
+        #     self.level2.on_click_param = "level_dos"
+        # else:
+        #     self.level2.on_click_param = "levels"
+        # if(self.condicion_lvl3):
+        #     self.level3.on_click_param = "level_tres"
+        # else:
+        #     self.level3.on_click_param = "levels"
         
     def iniciar_level(self,parametro):
         '''

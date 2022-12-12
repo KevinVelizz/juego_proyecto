@@ -13,12 +13,12 @@ class FormRanking(Form):
         self.name = name
         self.lista_widgets_puntos = []   
         self.lista_widgets_name = []
-        self.eje_y = 110              
+        self.eje_y = 120              
 
         for i in range(4):
-            self.lista_widgets_name.append(Widget(master_form=self,x=60,y=self.eje_y,w=160,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[i][1],font="Arial",font_size=40,font_color=C_BLACK))
+            self.lista_widgets_name.append(Widget(master_form=self,x=60,y=self.eje_y,w=160,h=65,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/table_2.png",text= self.data_player[i][1],font="Arial",font_size=40,font_color=C_BLACK))
 
-            self.lista_widgets_puntos.append(Widget(master_form=self,x=240,y=self.eje_y,w=100,h=70,color_background=None,color_border=None,image_background=None,text= self.data_player[i][2],font="Arial",font_size=40,font_color=C_BLACK))
+            self.lista_widgets_puntos.append(Widget(master_form=self,x=240,y=self.eje_y,w=100,h=65,color_background=None,color_border=None,image_background="PIXEL ADVENTURE/Recursos/Menu/table_2.png",text= self.data_player[i][2],font="Arial",font_size=40,font_color=C_BLACK))
             self.eje_y += 70
 
         self.boton_name_ranking = Widget(master_form=self,x=150,y=20,w=100,h=150,color_background=None,color_border=None,image_background=None,text= "Score",font="Arial",font_size=40,font_color=C_BLACK)

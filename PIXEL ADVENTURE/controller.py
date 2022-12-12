@@ -103,7 +103,8 @@ def deleteRow(id_table):
         sentencia = "DELETE FROM puntaje WHERE id=?"
         cursor=conexion.execute(sentencia,(id,))
 
-# deleteRow(1)
+
+# deleteRow(6)
 
 def updateRow(id,puntos_player):
     '''

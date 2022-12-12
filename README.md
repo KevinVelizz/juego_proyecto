@@ -8,29 +8,34 @@ El proyecto está estructurado por [Python](https://www.python.org/ "Python")
 El juego se maneja por una serie de formularios que se encuentran de una manera inactiva. Lo que hacen estos formularios es contener la información necesaria de pantalla de juego, opciones,ranking,etc. en caso de ser activado alguno de dichos formularios se desactiva el anterior, produciendo que se muestre lo deseado.
 
 <h2>Funcionamiento del juego.</h2>
-<h3>1.  Concepto Principal</h3>
+<h3>1.  Concepto Principal.</h3>
 
 El objetivo es recolectar todas las frutas que encontraras en cada nivel, sumando puntos y acumulandolos hasta el último nivel. WARNING ten cuidado de no quedarte sin tiempo, no intentes reiniciar el nivel porque perderas los puntos al igual si morís, intenta conseguir los niveles de manera continua.
 
-<h3>2. Gameplay</h3>
+<h3>2. Gameplay.</h3>
 El juego es basico ir recolectando las frutas, con una barra de vida y tiempo, trampas que evitar y enemigos que aniquilar. 
 
-<h3>3. Sonido</h3>
+<h3>3. Sonido.</h3>
 Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, colision, impacto de bala y en el menú lo necesario para variar el volumen.
 
-<h3>4. Controles de juego</h3>
+<h3>4. Controles de juego.</h3>
 
 ![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)
 
-<h3>5. Video de descarga e instalación</h3>
+<h3>5. Video de descarga e instalación.</h3>
 
 Click [aquí](https://youtu.be/gRpY-ty3alU "aquí")
 
-<h3>6. Bugs conocidos y posibles correcciones de errores.</h3>
-- Las balas del enemigo desaparecen cuando muere el mismo.
-- El personaje se "pega" a la pared cuando salta o baja.
+<h3>6. Video demo del juego.</h3>
+
+Click [aquí](https://youtu.be/nsyVsz9-LiU "aquí")
+
+<h3>7. Bugs conocidos y posibles correcciones de errores.</h3>
+<li>Las balas del enemigo desaparecen cuando muere el mismo.</li>
+<li>El personaje se "pega" a la pared cuando salta o baja.</li>
 
 <h3>Un poco sobre mí</h3>
+
 
 Soy Veliz Kevin, tengo 20 años soy, estudiante de 1er año en la Universidad Tecnológica Nacional de Avellaneda en la tecnicatura en programación. Cursando el 1er cuatrimestre y adentrandome en este gran mundo. 
 Soy un joven entuciasta, autodidacta, comprometido y con ganas de aprender constantemente.
