@@ -78,7 +78,6 @@ while True:
     elif(form_name_player.active and not level_tres.win_lvl3 or level_tres.win_lvl3):
         form_name_player.update(lista_events)
         form_name_player.draw()
-        
 
     elif(form_clasifiaciones.active):
         form_clasifiaciones.update(lista_events)

@@ -15,6 +15,8 @@ El objetivo es recolectar todas las frutas que encontraras en cada nivel, sumand
 <h3>2. Gameplay.</h3>
 El juego es basico ir recolectando las frutas, con una barra de vida y tiempo, trampas que evitar y enemigos que aniquilar. 
 
+![](https://cdn.discordapp.com/attachments/1004735676954193921/1051711511053205584/gameplay.png)
+
 <h3>3. Sonido.</h3>
 Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, colision, impacto de bala y en el menú lo necesario para variar el volumen.
 
@@ -22,23 +24,21 @@ Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, c
 
 ![](https://cdn.discordapp.com/attachments/1004735676954193921/1051230371053830194/controles_player.png)
 
-<h3>5. Video de descarga e instalación.</h3>
+<h3>5. Bugs conocidos y posibles correcciones de errores.</h3>
+<li>Las balas del enemigo desaparecen cuando muere el mismo.</li>
+
+<h3>6. Video de descarga e instalación.</h3>
 
 Click [aquí](https://youtu.be/gRpY-ty3alU "aquí")
 
-<h3>6. Video demo del juego.</h3>
+<h3>7. Video demo del juego.</h3>
 
 Click [aquí](https://youtu.be/nsyVsz9-LiU "aquí")
 
-<h3>7. Bugs conocidos y posibles correcciones de errores.</h3>
-<li>Las balas del enemigo desaparecen cuando muere el mismo.</li>
-<li>El personaje se "pega" a la pared cuando salta o baja.</li>
 
 <h3>Un poco sobre mí</h3>
-
-
-Soy Veliz Kevin, tengo 20 años soy, estudiante de 1er año en la Universidad Tecnológica Nacional de Avellaneda en la tecnicatura en programación. Cursando el 1er cuatrimestre y adentrandome en este gran mundo. 
-Soy un joven entuciasta, autodidacta, comprometido y con ganas de aprender constantemente.
+Soy Veliz Kevin, tengo 20 años estudiante de 1er año en la Universidad Tecnológica Nacional de Avellaneda en la tecnicatura en programación. Cursando el 1er cuatrimestre y adentrándome en este gran mundo de la programación. 
+Soy un joven entusiasta, autodidacta, comprometido y con ganas de aprender constantemente.
 
 <h3 align="left">Contactate conmigo:</h3>
 <p align="left">
