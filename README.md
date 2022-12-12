@@ -27,11 +27,18 @@ Con una musica de fondo durante todo el juego, con sonidos de efectos, ataque, c
 <h3>5. Bugs conocidos y posibles correcciones de errores.</h3>
 <li>Las balas del enemigo desaparecen cuando muere el mismo.</li>
 
-<h3>6. Video de descarga e instalación.</h3>
+<h3>6. Futuras Mejoras</h3>
+
+<li>Agregar más niveles con mayor dificultad.</li>
+<li>Mejoras visuales de botones,textos,etc.</li>
+<li>Pulir lo necesario para un funcionamiento aún más fluido</li>
+
+
+<h3>7. Video de descarga e instalación.</h3>
 
 Click [aquí](https://youtu.be/gRpY-ty3alU "aquí")
 
-<h3>7. Video demo del juego.</h3>
+<h3>8. Video demo del juego.</h3>
 
 Click [aquí](https://youtu.be/nsyVsz9-LiU "aquí")
 
@@ -47,7 +54,7 @@ Soy un joven entusiasta, autodidacta, comprometido y con ganas de aprender const
 <a href="https://instagram.com/kevinvelizz__" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="kevinvelizz__" height="30" width="40" /></a>
 </p>
 
-<h3 align="left">Languages and Tools:</h3>
+<h3 align="left">Lenguajes y Herramientas:</h3>
 <p align="left"> <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://www.microsoft.com/en-us/sql-server" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="mssql" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <a href="https://www.sqlite.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg" alt="sqlite" width="40" height="40"/> </a> </p>
 
 <p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=kevinvelizz&show_icons=true&locale=en&layout=compact" alt="kevinvelizz" /></p>

@@ -83,7 +83,7 @@ class LevelUno(Form):
         
         
     def update(self,delta_ms,lista_events):
-        ''''
+        '''
         El metodo updatea todo lo necesario para podrucir el nivel 1.
         Recibe por parametro el tiempo actual del juego y la lista de eventos.
         '''
